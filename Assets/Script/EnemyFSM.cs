@@ -50,6 +50,14 @@ public class EnemyFSM : MonoBehaviour
     // 애니메이터 변수
     Animator anim;
 
+    public AudioClip audioIdle;
+    public AudioClip audioMove;
+    public AudioClip audioAttack;
+    public AudioClip audioDamaged;
+    public AudioClip audioDie;
+
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +74,8 @@ public class EnemyFSM : MonoBehaviour
 
         // 자식 오브젝트로부터 애니메이터 변수 받아오기
         anim = transform.GetComponentInChildren<Animator>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -104,7 +114,7 @@ public class EnemyFSM : MonoBehaviour
 
             // 이동 애니메이션으로 전환하기
             anim.SetTrigger("IdleToMove");
-
+            PlaySound("Move");
         }
     }
     void Move()
@@ -115,6 +125,7 @@ public class EnemyFSM : MonoBehaviour
             // 현재 상태를 복귀(Return)로 전환한다.
             m_State = EnemyState.Return;
             print("상태 전환: Move -> Return");
+            PlaySound("Move");
         }
         // 만일, 플레이어와의 거리가 공격 범위 밖이라면 플레이어를 향해 이동한다.
         else if (Vector3.Distance(transform.position, player.position) > attackDistance)
@@ -152,7 +163,7 @@ public class EnemyFSM : MonoBehaviour
 
                 // 공격 애니메이션 플레이
                 anim.SetTrigger("StartAttack");
-
+                PlaySound("Attack");
             }
         }
         // 그렇지 않다면, 현재 상태를 이동(Move)으로 전환한다(재추격 실시).
@@ -164,6 +175,7 @@ public class EnemyFSM : MonoBehaviour
 
             // 이동 애니메이션 플레이
             anim.SetTrigger("AttackToMove");
+            PlaySound("Move");
         }
     }
     // 플레이어의 스크립트의 데미지 처리 함수를 실행하기
@@ -193,6 +205,7 @@ public class EnemyFSM : MonoBehaviour
 
             // 대기 애니메이션으로 전환하는 트랜지션을 호출한다.
             anim.SetTrigger("MoveToIdle");
+            PlaySound("Idle");
         }
     }
     void Damaged()
@@ -223,6 +236,7 @@ public class EnemyFSM : MonoBehaviour
             // 피격 애니메이션을 플레이한다.
             anim.SetTrigger("Damaged");
             Damaged();
+            PlaySound("Damaged");
         }
         // 그렇지 않다면 죽음 상태로 전환한다.
         else
@@ -233,6 +247,7 @@ public class EnemyFSM : MonoBehaviour
             // 죽음 애니메이션을 플레이한다.
             anim.SetTrigger("Die");
             Die();
+            PlaySound("Die");
         }
     }
     // 죽음 상태 함수
@@ -251,5 +266,28 @@ public class EnemyFSM : MonoBehaviour
         yield return new WaitForSeconds(2f);
         print("소멸!");
         Destroy(gameObject);
+    }
+
+    void PlaySound(string action)
+    {
+        switch (action)
+        {
+            case "Idle":
+                audioSource.clip = audioIdle;
+                break;
+            case "Move":
+                audioSource.clip = audioMove;
+                break;
+            case "Attack":
+                audioSource.clip = audioAttack;
+                break;
+            case "Damaged":
+                audioSource.clip = audioDamaged;
+                break;
+            case "Die":
+                audioSource.clip = audioDie;
+                break;
+        }
+        audioSource.Play();
     }
 }
