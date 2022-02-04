@@ -3,7 +3,12 @@ guid: b166aa5befabcbe4f8c1b3a75674fe70
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioIdle: {fileID: 8300000, guid: ceb2474913e8b5e40b17213af473d784, type: 3}
+  - audioMove: {fileID: 8300000, guid: e1e7f406c66d0c34f94726e83f3b5cbd, type: 3}
+  - audioAttack: {fileID: 8300000, guid: 12e7285fa38aaf943a0ed8c7f3c684eb, type: 3}
+  - audioDamaged: {fileID: 8300000, guid: b771cd0787c16e64e8e8ba11c3c83734, type: 3}
+  - audioDie: {fileID: 8300000, guid: 1d92c5ac0e056b045b4461b147f95be5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
