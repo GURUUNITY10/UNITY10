@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A9C6A3E7-F7E6-C880-8FFA-B82E571A36B9}</ProjectGuid>
+    <ProjectGuid>{F2F8EED1-7840-183A-BF47-B2E6427F6D34}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -55,15 +55,23 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamRotate.cs" />
     <Compile Include="Assets\Scripts\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\EnemyFSM.cs" />
     <Compile Include="Assets\Scripts\PlayerRotate.cs" />
-    <Compile Include="Assets\Scripts\CamFollow.cs" />
-    <Compile Include="Assets\Scripts\PlayerFire.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\CamTarget.cs" />
-    <Compile Include="Assets\AllStarCharacterLibray\Scripts\MouseOrbit.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\Outfitter.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\SkinnedMeshCombiner.cs" />
-    <Compile Include="Assets\AllStarCharacterLibray\Scripts\CharacterDemoController.cs" />
+    <Compile Include="Assets\Scripts\CamFollow.cs" />
+    <Compile Include="Assets\Scripts\PlayerFire.cs" />
+    <Compile Include="Assets\AllStarCharacterLibray\Scripts\MouseOrbit.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\RootMotionOff.cs" />
+    <Compile Include="Assets\AllStarCharacterLibray\Scripts\CharacterDemoController.cs" />
+    <Compile Include="Assets\Scripts\HitEvent.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\MouseLookScript.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\BulletScript.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\GunInventory.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\DestroyAfterTimeParticle.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\PlayerMovementScript.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\GunScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
