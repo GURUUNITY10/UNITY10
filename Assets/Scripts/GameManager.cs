@@ -19,28 +19,27 @@ public class GameManager : MonoBehaviour
     public GameObject startPanel;
     public GameObject gamePanel;
     public GameObject helpPanel;
-    public GameObject overPanel;
-    
 
-/*    void Update()
+    // overPanel -> gameOverPanel 바꿈
+    public GameObject gameOverPanel;
+
+    // text 추가
+    public GameObject gameOverText;
+
+
+    // update 함수 주석 해제, if문 내용 변경
+    void Update()
     {
         // 플레이어 hp 없을 시 게임 종료
         if (player.hp <= 0)
         {
-            // 상태 텍스트를 활성화한다.
-            gameLabel.SetActive(true);
-
-            gameText.text = "Game Over";
-
-            // 상태 텍스트의 색상을 붉은색으로 한다.
-            gameText.color = new Color32(225, 0, 0, 225);
-
-            gState = GameState.Gameover;
+            gameOverText.SetActive(true);
+            gameOverPanel.SetActive(true);
         }
 
         if (isBattle)
             playTime += Time.deltaTime;
-    }*/
+    }
 
     public void GameStart()
     {
@@ -64,7 +63,9 @@ public class GameManager : MonoBehaviour
     public void Back()
     {
         helpPanel.SetActive(false);
-        overPanel.SetActive(false);
+
+        // overPanel -> gameOverPanel 이름 변경
+        gameOverPanel.SetActive(false);
         startPanel.SetActive(true);
 
         player.gameObject.SetActive(false);
