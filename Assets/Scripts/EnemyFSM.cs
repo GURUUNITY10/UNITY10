@@ -40,6 +40,8 @@ public class EnemyFSM : MonoBehaviour
 
     // 초기 위치 저장용 변수
     Vector3 originPos;
+    Quaternion originRot;
+
     // 이동 가능 범위
     public float moveDistance = 20f;
     // 에너미의 체력
@@ -50,7 +52,6 @@ public class EnemyFSM : MonoBehaviour
     // 애니메이터 변수
     Animator anim;
 
-    public AudioClip audioIdle;
     public AudioClip audioMove;
     public AudioClip audioAttack;
     public AudioClip audioDamaged;
@@ -68,9 +69,6 @@ public class EnemyFSM : MonoBehaviour
 
         // 캐릭터 콘트롤러 컴포넌트 받아오기
         cc = GetComponent<CharacterController>();
-
-        // 자신의 초기 위치 저장하기
-        originPos = transform.position;
 
         // 자식 오브젝트로부터 애니메이터 변수 받아오기
         anim = transform.GetComponentInChildren<Animator>();
@@ -91,9 +89,6 @@ public class EnemyFSM : MonoBehaviour
                 break;
             case EnemyState.Attack:
                 Attack();
-                break;
-            case EnemyState.Return:
-                Return();
                 break;
             case EnemyState.Damaged:
                 Damaged();
@@ -116,19 +111,12 @@ public class EnemyFSM : MonoBehaviour
             anim.SetTrigger("IdleToMove");
             PlaySound("Move");
         }
+
     }
     void Move()
     {
-        // 만일 현재 위치가 초기 위치에서 이동 가능 범위를 넘어간다면...
-        if (Vector3.Distance(transform.position, originPos) > moveDistance)
-        {
-            // 현재 상태를 복귀(Return)로 전환한다.
-            m_State = EnemyState.Return;
-            print("상태 전환: Move -> Return");
-            PlaySound("Move");
-        }
         // 만일, 플레이어와의 거리가 공격 범위 밖이라면 플레이어를 향해 이동한다.
-        else if (Vector3.Distance(transform.position, player.position) > attackDistance)
+        if (Vector3.Distance(transform.position, player.position) > attackDistance)
         {
             // 이동 방향 설정
             Vector3 dir = (player.position - transform.position).normalized;
@@ -182,31 +170,6 @@ public class EnemyFSM : MonoBehaviour
     public void AttackAction()
     {
         //player.GetComponent<PlayerMove>().DamageAction(attackPower);
-    }
-    void Return()
-    {
-        // 만일, 초기 위치에서의 거리가 0.1f 이상이라면 초기 위치 쪽으로 이동한다.
-        if (Vector3.Distance(transform.position, originPos) > 0.1f)
-        {
-            Vector3 dir = (originPos - transform.position).normalized;
-            cc.Move(dir * moveSpeed * Time.deltaTime);
-
-            // 복귀 지점으로 방향을 전환한다.
-            transform.forward = dir;
-        }
-        // 그렇지 않다면, 자신의 위치를 초기 위치로 조정하고 현재 상태를 대기로 전환한다.
-        else
-        {
-            transform.position = originPos;
-            // hp를 다시 회복한다.
-            hp = maxHp;
-            m_State = EnemyState.Idle;
-            print("상태 전환: Return -> Idle");
-
-            // 대기 애니메이션으로 전환하는 트랜지션을 호출한다.
-            anim.SetTrigger("MoveToIdle");
-            PlaySound("Idle");
-        }
     }
     void Damaged()
     {
@@ -272,9 +235,6 @@ public class EnemyFSM : MonoBehaviour
     {
         switch (action)
         {
-            case "Idle":
-                audioSource.clip = audioIdle;
-                break;
             case "Move":
                 audioSource.clip = audioMove;
                 break;
