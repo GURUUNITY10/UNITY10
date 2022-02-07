@@ -14,7 +14,6 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         gameOverText.SetActive(false);
-        gameOverPanel.SetActive(false);
         timerBar = GetComponent<Image>();
         timeLeft = maxTime;
     }
