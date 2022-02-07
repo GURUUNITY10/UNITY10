@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using System;
 using System.Collections;
@@ -17,7 +16,7 @@ public class CharacterDemoController : MonoBehaviour
 	public Vector3 		movementTargetPosition;
 	public Vector3 		attackPos;
 	public Vector3		lookAtPos;
-	float				gravity = 0.3f;//unused in this demonstration
+	//float				gravity = 0.3f;//unused in this demonstration
 	
 	RaycastHit hit;
 	Ray ray;
