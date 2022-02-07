@@ -53,25 +53,25 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Easy FPS\Scripts\GunInventory.cs" />
     <Compile Include="Assets\Scripts\CamRotate.cs" />
     <Compile Include="Assets\Scripts\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\EnemyFSM.cs" />
     <Compile Include="Assets\Scripts\PlayerRotate.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\CamTarget.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\PlayerMovementScript.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\Outfitter.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\BulletScript.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\SkinnedMeshCombiner.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\GunScript.cs" />
     <Compile Include="Assets\Scripts\CamFollow.cs" />
     <Compile Include="Assets\Scripts\PlayerFire.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\MouseOrbit.cs" />
+    <Compile Include="Assets\Easy FPS\Scripts\MouseLookScript.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\RootMotionOff.cs" />
     <Compile Include="Assets\AllStarCharacterLibray\Scripts\CharacterDemoController.cs" />
-    <Compile Include="Assets\Scripts\HitEvent.cs" />
-    <Compile Include="Assets\Easy FPS\Scripts\MouseLookScript.cs" />
-    <Compile Include="Assets\Easy FPS\Scripts\BulletScript.cs" />
-    <Compile Include="Assets\Easy FPS\Scripts\GunInventory.cs" />
     <Compile Include="Assets\Easy FPS\Scripts\DestroyAfterTimeParticle.cs" />
-    <Compile Include="Assets\Easy FPS\Scripts\PlayerMovementScript.cs" />
-    <Compile Include="Assets\Easy FPS\Scripts\GunScript.cs" />
+    <Compile Include="Assets\Scripts\HitEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
